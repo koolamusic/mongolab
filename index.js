@@ -45,17 +45,17 @@ const Food = mongoose.model('Food', foodSchema)
 
 // save the course in the database; this is an async operation since we will be accessing the file system,
 // this operation will return a promise.  REMEMBER that when you use await you should have your code in an async function
-async function createFood {
+async function createFood() {
   const newFood = new Food({
   origin: 'Grains',
-  country: 'Ghana',
-  tag: ['jollof', 'Wackye'],
-  isReady: true
+  country: 'Nigeria',
+  tag: ['Green', 'Corn'],
+  isReady: false
 
 })
 
 // call the course.save operation within an await then console.log the result
-const result = await course.save();
+const result = await newFood.save();
 console.log(result);
 
 }
@@ -65,6 +65,23 @@ createFood();
 
 
 
+// query and retrieve collections from database
+// use the Defined Mongoose.Model Created e.g *(Food) to query db based on methods within an async function
+// you can pass an object from Mongoose model .find object can take properties and this can take one or more arguments 
+// mongoose.Model.find ({key: value you are searching for or filtering for})
+// .limit (you can customize this query to have a limit of results for return)
+// .sort ({}) you can use this to modify the order (ascending or descending order (true,false, 1, -1))
+// .select({}) you can choose which fields to include or exclude from collection data outputs. 
 
 
-// query collections
+async function getFood() {
+  const food = await Courses.find({country: 'Nigeria'})
+
+  console.log(food);
+
+}
+
+getFood();
+
+
+// Comparison Operators in Mongo
