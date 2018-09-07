@@ -70,4 +70,10 @@ async function retrieveCourseBackend() {
 }
 
 
-retrieveCourseBackend();
+async function courseQuery(fn) {
+ console.log(await fn)
+};
+
+
+// call the function within courseQuery
+courseQuery(retrieveCourseBackend());
