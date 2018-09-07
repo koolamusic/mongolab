@@ -50,7 +50,7 @@ async function createFood() {
   origin: 'Grains',
   country: 'Nigeria',
   tag: ['Green', 'Corn'],
-  isReady: false
+  isReady: true
 
 })
 
@@ -61,7 +61,12 @@ console.log(result);
 }
 
 // call the async create food function here
-createFood();
+
+
+/*
+ createFood();
+*/
+
 
 
 
@@ -74,14 +79,43 @@ createFood();
 // .select({}) you can choose which fields to include or exclude from collection data outputs. 
 
 
-async function getFood() {
-  const food = await Courses.find({country: 'Nigeria'})
+// async function getFood() {
+//   const food = await Food
+//   .find({country: 'Ghana'})
+//   .sort({country: 1})
 
-  console.log(food);
 
-}
+//   console.log(food);
 
-getFood();
+// }
+
+// getFood();
 
 
 // Comparison Operators in Mongo
+
+// gt (greater than)
+// ne (not equal)
+// eq(equal to)
+// gte (greater than or equal to )
+// lt (less than)
+// lte (less than or equal)
+// in
+// nin (not in)
+// Example will be to use The mongoose.Model.find({price: { $gte: 10, $lte: 5 e2} })
+
+
+// async function getFood() {
+//   const food = await Food
+//     .find({ country: { $in: ['Ghana', 'Nigeria'] } })
+//     .sort({ country: 1 })
+//     .limit(2)
+
+//   console.log(food);
+
+// }
+
+// getFood();
+
+
+// Using Logical Operators to retrieve data from MongoDB
