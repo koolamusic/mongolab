@@ -119,14 +119,46 @@ console.log(result);
 
 
 // Using Logical Operators to retrieve data from MongoDB
+// async function getFood() {
+//   // Mongo db uses the `and and or` Logical Operators
+//   // the construct below is an example of how it can be implemented
+//   // we pass in an array of filter objects
+//   const food = await Food
+//     .find()
+//     .and([ {country: 'Nigeria'}, {isReady: true} ])
+//     .sort({ country: 1 })
+
+
+//   console.log(food);
+
+// }
+
+// getFood();
+
+
+
+// Using Regular Expressions
+// async function getFood() {
+//   const food = await Food
+//     .find({ country: /^ghana/i })
+//     .sort({ country: 1 })
+
+
+//   console.log(food);
+
+// }
+
+// getFood();
+
+
+
+// counting the results of a Mongoose Query 
+// use the .countDocuments or EstimatedDocumentCount method in the example below
 async function getFood() {
-  // Mongo db uses the `and and or` Logical Operators
-  // the construct below is an example of how it can be implemented
-  // we pass in an array of filter objects
   const food = await Food
-    .find()
-    .and([ {country: 'Nigeria'}, {isReady: true} ])
+    .find({ country: /^nigeria/i })
     .sort({ country: 1 })
+    .countDocuments()
 
 
   console.log(food);
@@ -134,4 +166,3 @@ async function getFood() {
 }
 
 getFood();
-
