@@ -62,11 +62,12 @@ PROCESSES OR FUNCTIONS, USE ASYNC FUNCTIONS TO MANIPULATE RETURN FROM OTHER ASYN
 
 async function retrieveFrontBack() {
   return await Courses
-    .find({ tags: { $in: ['backend', 'frontend'] } })
+    .find({isPublished: true, tags: { $in: ['backend', 'frontend'] } })
+
     // sort them by their price in a descending order
     .sort({ price: -1 })
     // use select to determine which collection properties to output name and author
-    .select({ name: 1, author: 1, isPublished: 1 })
+    .select({ name: 1, author: 1, isPublished: 1, price: 1 })
 }
 
 
