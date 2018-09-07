@@ -16,7 +16,10 @@ const foodSchema = mongoose.Schema({
   origin : String,
   country : String,
   tag: [String],
-  date: Date,
+  date: {
+    type: Date, 
+    default: Date.now()
+  },
   isReady: Boolean,
 
 });
@@ -31,15 +34,34 @@ const Food = mongoose.model('Food', foodSchema)
 
 // Food is a CLASS and you can create objects out of it using a constructor function
 // model contructors create an interface to mongoDB collections as well as create document instances.
-const newFood = new Food({
-  origin: 'Food',
-  country: 'Nigeria',
-  tag: ['jollof', 'tomato'],
+// const newFood = new Food({
+//   origin: 'Food',
+//   country: 'Nigeria',
+//   tag: ['jollof', 'tomato'],
+//   isReady: true
+
+// })
+
+
+// save the course in the database; this is an async operation since we will be accessing the file system,
+// this operation will return a promise.  REMEMBER that when you use await you should have your code in an async function
+async function createFood {
+  const newFood = new Food({
+  origin: 'Grains',
+  country: 'Ghana',
+  tag: ['jollof', 'Wackye'],
   isReady: true
 
 })
 
+// call the course.save operation within an await then console.log the result
+const result = await course.save();
+console.log(result);
 
+}
+
+// call the async create food function here
+createFood();
 
 
 
