@@ -22,11 +22,12 @@ mongoose.connect('mongodb://localhost/mongo-exercises', options)
 
  // create or import Courses Schema 
  const courseSchema = mongoose.Schema({
-   tags : [String],
    name : String,
+   tags : [String],
    author : String,
+   date : {type: Date, default: Date.now},
    price : Number,
-  isPublished : true
+  isPublished : Boolean
  })
 
 
@@ -37,3 +38,36 @@ const Courses = mongoose.model('Courses', courseSchema)
 
 
 
+// write async function to retrieve document  properties from the courses collection
+// retrieve all backend courses using the $in comparison operator
+// use the .sort method to sort them by their name
+// async function retrieveCourseBackend(){
+//   const courses = await Courses
+//   .find({tags: { $in: 'backend'} })
+//   .and( {isPublished: true} )
+//   .sort( { name: 1} )
+//   // use select to determine which collection properties to output
+//   .select({ name: 1, author: 1, isPublished: 1 })
+//   console.log(courses);
+// }
+
+// console.time(retrieveCourseBackend());
+
+
+
+/*
+IT IS GENERALLY ADVISABLE TO RETURN DATA IN FUNCTIONS AND CALL THEM OR CONSOLE.LOG THROUGH OTHER 
+PROCESSES OR FUNCTIONS, USE ASYNC FUNCTIONS TO MANIPULATE RETURN FROM OTHER ASYNC FUNCTIONS
+*/
+
+async function retrieveCourseBackend() {
+  return await Courses
+    .find({ tags: { $in: 'backend' } })
+    .and({ isPublished: true })
+    .sort({ name: 1 })
+    // use select to determine which collection properties to output
+    .select({ name: 1, author: 1, isPublished: 1 })
+}
+
+
+retrieveCourseBackend();
