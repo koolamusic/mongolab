@@ -37,66 +37,62 @@ PROCESSES OR FUNCTIONS, USE ASYNC FUNCTIONS TO MANIPULATE RETURN FROM OTHER ASYN
 */
 
 
-// update course, using the ID
-async function updateCourse(id) {
-  // Approach: Query First 
-  // findById()
-  // Modify its properties
-  // save()
+// // update course, using the ID
+// async function updateCourse(id) {
+//   // Approach: Query First 
+//   // findById()
+//   // Modify its properties
+//   // save()
 
 
 
-  // Approach : Update First
-  // Update directly 
-  // Optionally: get the updated document 
+//   // Approach : Update First
+//   // Update directly 
+//   // Optionally: get the updated document 
 
-  const course = await Courses.findById(id);
-    if (!course) return;
-
-
-    course.isPublished = true;
-    course.author = 'Yuri Gagarin';
+//   const course = await Courses.findById(id);
+//     if (!course) return;
 
 
-  // if (!course) {
-  //   return 
-  // }
-  // else {
-  //   course.isPublished = true;
-  //   course.author = 'Andrew Miracle';
-
-  // }
-  const result = await course.save();
-  console.log(result);
+//     course.isPublished = true;
+//     course.author = 'Yuri Gagarin';
 
 
-  // you can also use the course.set() method to directly update the course database
-  // using Approach 2 as stated above 
-  // let result = course.set({
-  //   isPublished: true,
-  //   author: 'Yuri Gagarin'
+//   // if (!course) {
+//   //   return 
+//   // }
+//   // else {
+//   //   course.isPublished = true;
+//   //   course.author = 'Andrew Miracle';
+//   // }
+//   const result = await course.save();
+//   console.log(result);
 
-  // })
+
+//   // you can also use the course.set() method to directly update the course database
+//   // using Approach 2 as stated above 
+//   // let result = course.set({
+//   //   isPublished: true,
+//   //   author: 'Yuri Gagarin'
+
+//   // })
   
+
+// }
+
+
+// // call the function within updateCourse
+// updateCourse('5a68fdd7bee8ea64649c2777');
+
+
+
+
+async function updateCourse(idNum) {
+  const course = await Courses.findById(idNum);
+
+
+  return course.author
 
 }
 
-
-// call the function within updateCourse
-updateCourse('5a68fdd7bee8ea64649c2777');
-
-
-
-
-// async function updateCourse(id) {
-//   const course = await Courses.findById(id);
-//   if (!course) return;
-
-//   course.isPublished = true;
-//   course.author = 'Yuri Gagarin';
-
-//   const result = await course.save();
-//   console.log(result);
-// }
-
-// updateCourse('5a68fdd7bee8ea64649c2777');
+console.log(updateCourse("5a68fdd7bee8ea64649c2777));
