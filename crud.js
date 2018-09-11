@@ -103,18 +103,33 @@ PROCESSES OR FUNCTIONS, USE ASYNC FUNCTIONS TO MANIPULATE RETURN FROM OTHER ASYN
 // }
 
 
-// updateCourse("5a68fdd7bee8ea64649c2777");
+// updateCourse("5a68ff090c553064a218a547");
 
 
 // Test Async Function on Mongoose Find() method
-async function testCollection(id) {
-  const testDb = await Courses.find({name: id})
-  console.log(testDb);
-}
+// async function testCollection(id) {
+//   const testDb = await Courses.find({name: id})
+//   console.log(testDb);
+// }
 
-testCollection(/.*by.*/i);
+// testCollection(/.*by.*/i);
 
 
+
+
+// Try creating a forLoop to Traige a collection by their ID and create an async function to change their author names
+// async function testCollection(id) {
+//   const testDb = await Courses.find({ name: id })
+//   console.log(testDb);
+
+//   for (let i = 0; i < testDb.length; i++) {
+//     testDb[i].author = "Andrew Jacob";
+//     testDb.save()    
+//   }
+
+// }
+
+// testCollection(/.*by.*/i);
 
 
 
