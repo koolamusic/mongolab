@@ -170,16 +170,16 @@ async function getFood() {
 
 // create schema to update food collection using update method
 async function setFood(id) {
-  const result = await Food.update({_id: id}, {
+  const result = await Food.updateOne({_id: id}, {
     $set: {
-      isReady: false,
-      country: 'Uganda Mina'
+      isReady: true,
+      country: 'Turkey'
     }
   });
   console.log(result);
 }
 
-setFood('5b924603c2a01b4a4e0bfb63')
+// setFood('5b924603c2a01b4a4e0bfb63')
 
 
 
@@ -197,3 +197,20 @@ async function updateFood(id) {
 }
 
 // updateFood('5b924603c2a01b4a4e0bfb63');
+
+
+
+
+// using the findByIdAndUpdate Method, we pass in the Id parameter and retain the update values,
+// but in order to log the result of new update functions we have to add the {new: true} parameter as an option to the findByIdAndUpdate method
+async function setFood(id) {
+  const result = await Food.findByIdAndUpdate( id, {
+    $set: {
+      isReady: false,
+      country: 'Turkey Mania'
+    }
+  }, {new: true});
+  console.log(result);
+}
+
+setFood('5b924603c2a01b4a4e0bfb63')
