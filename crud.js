@@ -1,7 +1,6 @@
 // import mongoose 
 const mongoose = require('mongoose');
 
-
 // add newURl parser to mongoose options 
 const options = {
   useNewUrlParser: true
@@ -87,12 +86,43 @@ PROCESSES OR FUNCTIONS, USE ASYNC FUNCTIONS TO MANIPULATE RETURN FROM OTHER ASYN
 
 
 
-async function updateCourse(idNum) {
-  const course = await Courses.findById(idNum);
+// async function updateCourse(idNum) {
+//   const course = await Courses.findById(idNum);
+// 	if (!course){
+//     return ;
+//   }
+//   else {
+//     course.isPublished = true;
+//     course.author = "Andrew Miracle";
+    
+//     const result = await course.save();
+//     console.log(result);
+//   }
+	
+
+// }
 
 
-  return course.author
+// updateCourse("5a68fdd7bee8ea64649c2777");
 
+
+// Test Async Function on Mongoose Find() method
+async function testCollection(id) {
+  const testDb = await Courses.find({name: id})
+  console.log(testDb);
 }
 
-console.log(updateCourse("5a68fdd7bee8ea64649c2777));
+testCollection(/.*by.*/i);
+
+
+
+
+
+
+
+
+
+
+
+
+
