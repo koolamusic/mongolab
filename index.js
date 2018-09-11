@@ -165,7 +165,7 @@ async function getFood() {
 
 }
 
-getFood();
+// getFood();
 
 
 // create schema to update food collection using update method
@@ -179,7 +179,21 @@ async function setFood(id) {
   console.log(result);
 }
 
+// setFood('5b924603c2a01b4a4e0bfb63')
 
 
-setFood('5b924603c2a01b4a4e0bfb63')
 
+
+async function updateFood(id) {
+  const food = await Food.findById(id);
+  if (!food) return;
+
+  food.isReady = false;
+  food.country = 'Uganda';
+
+  const result = await food.save();
+  console.log(result);
+
+}
+
+updateFood('5b924603c2a01b4a4e0bfb63');
