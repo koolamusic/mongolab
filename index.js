@@ -173,13 +173,13 @@ async function setFood(id) {
   const result = await Food.update({_id: id}, {
     $set: {
       isReady: false,
-      country: 'Uganda'
+      country: 'Uganda Mina'
     }
-  })
+  });
   console.log(result);
 }
 
-// setFood('5b924603c2a01b4a4e0bfb63')
+setFood('5b924603c2a01b4a4e0bfb63')
 
 
 
@@ -196,4 +196,4 @@ async function updateFood(id) {
 
 }
 
-updateFood('5b924603c2a01b4a4e0bfb63');
+// updateFood('5b924603c2a01b4a4e0bfb63');
