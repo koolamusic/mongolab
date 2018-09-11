@@ -199,18 +199,31 @@ async function updateFood(id) {
 // updateFood('5b924603c2a01b4a4e0bfb63');
 
 
-
+// 
 
 // using the findByIdAndUpdate Method, we pass in the Id parameter and retain the update values,
 // but in order to log the result of new update functions we have to add the {new: true} parameter as an option to the findByIdAndUpdate method
 async function setFood(id) {
   const result = await Food.findByIdAndUpdate( id, {
     $set: {
-      isReady: false,
-      country: 'Turkey Mania'
+      isReady: true,
+      country: 'Tunisia'
     }
   }, {new: true});
   console.log(result);
 }
 
-setFood('5b924603c2a01b4a4e0bfb63')
+// setFood('5b924603c2a01b4a4e0bfb63')
+
+
+
+// Find and Remove collection data 
+// use the deleteOne method to delete a collection in a database without outputing the result [This method takes a Filter or Query Object] and when there are more than one Queries that match a Filter it takes the first result and deletes IT]
+// use the find  to output the data of the collection to be deleted before deleting
+async function removeFood(id) {
+  const result = await Food.deleteOne({_id: id}) // won't return the collection that was deleted
+  const food = await Food.findOneAndRemove({_id: id});
+  console.log(food);
+}
+
+removeFood('5b925d28faa57c5c76872174');
