@@ -168,3 +168,18 @@ async function getFood() {
 getFood();
 
 
+// create schema to update food collection using update method
+async function setFood(id) {
+  const result = await Food.update({_id: id}, {
+    $set: {
+      isReady: false,
+      country: 'Uganda'
+    }
+  })
+  console.log(result);
+}
+
+
+
+setFood('5b924603c2a01b4a4e0bfb63')
+

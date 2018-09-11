@@ -36,7 +36,6 @@ PROCESSES OR FUNCTIONS, USE ASYNC FUNCTIONS TO MANIPULATE RETURN FROM OTHER ASYN
 */
 
 
-// // update course, using the ID
 // async function updateCourse(id) {
 //   // Approach: Query First 
 //   // findById()
@@ -88,17 +87,14 @@ PROCESSES OR FUNCTIONS, USE ASYNC FUNCTIONS TO MANIPULATE RETURN FROM OTHER ASYN
 
 // async function updateCourse(idNum) {
 //   const course = await Courses.findById(idNum);
-// 	if (!course){
-//     return ;
-//   }
-//   else {
-//     course.isPublished = true;
-//     course.author = "Andrew Miracle";
-    
-//     const result = await course.save();
-//     console.log(result);
-//   }
-	
+//   if (!course) return;
+  
+//     let result = course.set({
+//     isPublished: true,
+//     author: 'Yuri Gagarin'
+//   })
+
+//   console.log(result.author)
 
 // }
 
@@ -134,9 +130,22 @@ PROCESSES OR FUNCTIONS, USE ASYNC FUNCTIONS TO MANIPULATE RETURN FROM OTHER ASYN
 
 
 
+// Using the Update Method and MongoDB Update Operators [set operator]
+
+async function setCourse(id){
+	const result = await Courses.updateOne({_id: id}, {
+	  $set: {
+	    author: 'Mosh Andy',
+	    isPublished: false
+	   }
+	})
+	console.log(result);
+
+  }
 
 
 
+setCourse("5a68ff090c553064a218a547");
 
 
 
